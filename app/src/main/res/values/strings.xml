@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Kitchen Kompanion</string>
+    <string-array name="camera_options">
+        <item>dSLR</item>
+        <item>Mirrorless</item>
+    </string-array>
+</resources>
