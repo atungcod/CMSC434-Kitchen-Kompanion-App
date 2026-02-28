@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 1 -> {
                     tab.text = "LR"
-                    // add an icon here
+                    tab.setIcon(R.drawable.img_1)
+
                 }
                 2 -> {
                     tab.text = "Colors"
@@ -37,11 +38,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 3 -> {
                     tab.text = "Profile"
-                    // add icon here
+                    tab.setIcon(R.drawable.img_2)
                 }
                 4 -> {
                     tab.text = "Choices"
-                    // add icon here
                 }
                 5 -> {
                     tab.text = "ToDo"
@@ -64,7 +64,9 @@ class MainActivity : AppCompatActivity() {
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> TextFragment()
+                1 -> LRFragment()
                 2 -> ColorsFragment()
+                3 -> ProfileFragment()
                 4 -> ChoicesFragment()
                 5 -> TodoFragment()
                 else -> PlaceholderFragment.newInstance(position)
