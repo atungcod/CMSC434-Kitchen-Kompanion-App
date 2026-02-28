@@ -2,6 +2,7 @@ package com.example.kitchenkompanion
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.kitchenkompanion.databinding.ActivityMainBinding
@@ -21,14 +22,31 @@ class MainActivity : AppCompatActivity() {
 
         // nav bar setup
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = when (position) {
-                0 -> "Text"
-                1 -> "LR"
-                2 -> "Colors"
-                3 -> "Profile"
-                4 -> "Choices"
-                5 -> "ToDo"
-                else -> null
+            when (position) {
+                0 -> {
+                    tab.text = "Text"
+                    tab.setIcon(R.drawable._621521691571183084_128)
+                }
+                1 -> {
+                    tab.text = "LR"
+                    // add an icon here
+                }
+                2 -> {
+                    tab.text = "Colors"
+                    tab.setIcon(R.drawable._7755608461595340913_128)
+                }
+                3 -> {
+                    tab.text = "Profile"
+                    // add icon here
+                }
+                4 -> {
+                    tab.text = "Choices"
+                    // add icon here
+                }
+                5 -> {
+                    tab.text = "ToDo"
+                    tab.setIcon(R.drawable.checklist)
+                }
             }
             
             // Set the custom icon for the Choices tab
@@ -36,18 +54,20 @@ class MainActivity : AppCompatActivity() {
                 tab.setIcon(R.drawable.ic_choices)
             }
         }.attach()
-        
-        binding.viewPager.setCurrentItem(4, false)
+
+        binding.viewPager.setCurrentItem(0, false)
     }
 
     private inner class ViewPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
         override fun getItemCount(): Int = 6
 
         override fun createFragment(position: Int): Fragment {
-            return if (position == 4) {
-                ChoicesFragment()
-            } else {
-                PlaceholderFragment.newInstance(position)
+            return when (position) {
+                0 -> TextFragment()
+                2 -> ColorsFragment()
+                4 -> ChoicesFragment()
+                5 -> TodoFragment()
+                else -> PlaceholderFragment.newInstance(position)
             }
         }
     }
