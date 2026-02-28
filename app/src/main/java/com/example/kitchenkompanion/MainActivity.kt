@@ -21,23 +21,34 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.adapter = adapter
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = when (position) {
-                0 -> "Text"
-                1 -> "LR"
-                2 -> "Colors"
-                3 -> "Profile"
-                4 -> "Choices"
-                5 -> "ToDo"
-                else -> null
-            }
-            
-            tab.icon = when (position) {
-                0 -> ContextCompat.getDrawable(this, R.drawable._621521691571183084_128)
-                2 -> ContextCompat.getDrawable(this, R.drawable._7755608461595340913_128)
-                else -> null
+            when (position) {
+                0 -> {
+                    tab.text = "Text"
+                    tab.setIcon(R.drawable._621521691571183084_128)
+                }
+                1 -> {
+                    tab.text = "LR"
+                    // add an icon here
+                }
+                2 -> {
+                    tab.text = "Colors"
+                    tab.setIcon(R.drawable._7755608461595340913_128)
+                }
+                3 -> {
+                    tab.text = "Profile"
+                    // add icon here
+                }
+                4 -> {
+                    tab.text = "Choices"
+                    // add icon here
+                }
+                5 -> {
+                    tab.text = "ToDo"
+                    tab.setIcon(R.drawable.checklist)
+                }
             }
         }.attach()
-        
+
         binding.viewPager.setCurrentItem(0, false)
     }
 

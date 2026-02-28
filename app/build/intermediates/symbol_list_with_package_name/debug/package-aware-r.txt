@@ -2025,6 +2025,7 @@ color mtrl_textinput_focused_box_stroke_color
 color mtrl_textinput_hovered_box_stroke_color
 color notification_action_color_filter
 color notification_icon_bg_color
+color pink
 color primary_dark_material_dark
 color primary_dark_material_light
 color primary_material_dark
@@ -2919,6 +2920,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable checklist
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -3087,6 +3089,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addButton
 id alertTitle
 id aligned
 id all
@@ -3484,6 +3487,12 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id todoCheck
+id todoDelete
+id todoInput
+id todoRecycler
+id todoText
+id todoTitle
 id toggle
 id top
 id topPanel
@@ -3654,6 +3663,8 @@ layout design_text_input_start_icon
 layout fragment_choices
 layout fragment_colors
 layout fragment_text
+layout fragment_todo
+layout item_todo
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
