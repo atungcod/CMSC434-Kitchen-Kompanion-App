@@ -31,18 +31,18 @@ class MainActivity : AppCompatActivity() {
             }
         }.attach()
         
-        // Select the Choices tab by default as per request
-        binding.viewPager.setCurrentItem(4, false)
+        // Select the ToDo tab by default
+        binding.viewPager.setCurrentItem(5, false)
     }
 
     private inner class ViewPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
         override fun getItemCount(): Int = 6
 
         override fun createFragment(position: Int): Fragment {
-            return if (position == 4) {
-                ChoicesFragment()
-            } else {
-                PlaceholderFragment.newInstance(position)
+            return when (position) {
+                4 -> ChoicesFragment()
+                5 -> TodoFragment()
+                else -> PlaceholderFragment.newInstance(position)
             }
         }
     }
