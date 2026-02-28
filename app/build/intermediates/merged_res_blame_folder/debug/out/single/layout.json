@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-mergeDebugResources-33:/layout/fragment_text.xml",
+        "source": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-main-36:/layout/fragment_text.xml"
+    },
+    {
+        "merged": "com.example.kitchenkompanion.app-mergeDebugResources-33:/layout/fragment_colors.xml",
+        "source": "com.example.kitchenkompanion.app-main-36:/layout/fragment_colors.xml"
+    },
+    {
+        "merged": "com.example.kitchenkompanion.app-mergeDebugResources-33:/layout/fragment_text.xml",
+        "source": "com.example.kitchenkompanion.app-main-36:/layout/fragment_text.xml"
+    },
+    {
+        "merged": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-mergeDebugResources-33:/layout/activity_main.xml",
+        "source": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-main-36:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-mergeDebugResources-33:/layout/fragment_colors.xml",
+        "source": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-main-36:/layout/fragment_colors.xml"
+    },
+    {
+        "merged": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-mergeDebugResources-33:/layout/fragment_choices.xml",
+        "source": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-main-36:/layout/fragment_choices.xml"
+    }
+]

@@ -31,18 +31,18 @@ class MainActivity : AppCompatActivity() {
             }
         }.attach()
         
-        // Select the Choices tab by default as per request
-        binding.viewPager.setCurrentItem(4, false)
+        binding.viewPager.setCurrentItem(0, false)
     }
 
     private inner class ViewPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
         override fun getItemCount(): Int = 6
 
         override fun createFragment(position: Int): Fragment {
-            return if (position == 4) {
-                ChoicesFragment()
-            } else {
-                PlaceholderFragment.newInstance(position)
+            return when (position) {
+                0 -> TextFragment()
+                2 -> ColorsFragment()
+                4 -> ChoicesFragment()
+                else -> PlaceholderFragment.newInstance(position)
             }
         }
     }
