@@ -39,7 +39,7 @@ class ChoicesFragment : Fragment() {
 
             val camera2Text = spinner?.selectedItem?.toString() ?: "nothing"
 
-            txtResult?.text = "For Type #1 you chose: $camera1Text\nFor Type #2 you chose: $camera2Text"
+            txtResult?.text = "Type #1 Choice: $camera1Text\n Type #2 choice: $camera2Text"
         }
     }
 }

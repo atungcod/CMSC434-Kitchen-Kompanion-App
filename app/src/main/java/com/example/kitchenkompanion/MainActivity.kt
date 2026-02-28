@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = ViewPagerAdapter(this)
         binding.viewPager.adapter = adapter
 
+        // nav bar setup
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
                 0 -> {
@@ -46,6 +47,11 @@ class MainActivity : AppCompatActivity() {
                     tab.text = "ToDo"
                     tab.setIcon(R.drawable.checklist)
                 }
+            }
+            
+            // Set the custom icon for the Choices tab
+            if (position == 4) {
+                tab.setIcon(R.drawable.ic_choices)
             }
         }.attach()
 
