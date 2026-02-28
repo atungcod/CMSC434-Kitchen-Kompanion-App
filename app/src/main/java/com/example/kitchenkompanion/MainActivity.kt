@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
                 else -> null
             }
             
-            // Setting icons based on the files you just added
             tab.icon = when (position) {
                 0 -> ContextCompat.getDrawable(this, R.drawable._621521691571183084_128)
                 2 -> ContextCompat.getDrawable(this, R.drawable._7755608461595340913_128)
