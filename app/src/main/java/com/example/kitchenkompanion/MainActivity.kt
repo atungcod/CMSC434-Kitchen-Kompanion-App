@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 0 -> TextFragment()
                 2 -> ColorsFragment()
                 4 -> ChoicesFragment()
+                5 -> TodoFragment()
                 else -> PlaceholderFragment.newInstance(position)
             }
         }
