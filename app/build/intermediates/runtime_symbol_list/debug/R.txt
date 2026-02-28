@@ -2827,6 +2827,8 @@ int dimen tooltip_precise_anchor_threshold 0x7f070303
 int dimen tooltip_vertical_padding 0x7f070304
 int dimen tooltip_y_offset_non_touch 0x7f070305
 int dimen tooltip_y_offset_touch 0x7f070306
+int drawable _621521691571183084_128 0x7f0800e2
+int drawable _7755608461595340913_128 0x7f0800e3
 int drawable abc_ab_share_pack_mtrl_alpha 0x7f080028
 int drawable abc_action_bar_item_background_material 0x7f080029
 int drawable abc_btn_borderless_material 0x7f08002a

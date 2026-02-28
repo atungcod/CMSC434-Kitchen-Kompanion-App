@@ -8,6 +8,8 @@ color purple_700
 color teal_200
 color teal_700
 color white
+drawable _621521691571183084_128
+drawable _7755608461595340913_128
 id btnPrintChoices
 id colorsHeader
 id longTextView

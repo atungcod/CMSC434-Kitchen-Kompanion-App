@@ -1,4 +1,4 @@
-#Fri Feb 27 19:33:14 EST 2026
+#Fri Feb 27 20:14:06 EST 2026
 base.0=/Users/europaroso/Documents/GitHub/CMSC434-Kitchen-Kompanion-App/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/europaroso/Documents/GitHub/CMSC434-Kitchen-Kompanion-App/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.2=/Users/europaroso/Documents/GitHub/CMSC434-Kitchen-Kompanion-App/app/build/intermediates/dex/debug/mergeProjectDexDebug/13/classes.dex

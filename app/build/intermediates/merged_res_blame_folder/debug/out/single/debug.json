@@ -12,15 +12,15 @@
         "source": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-main-36:/layout/fragment_text.xml"
     },
     {
-        "merged": "com.example.kitchenkompanion.app-merged_res-34:/layout_fragment_colors.xml.flat",
-        "source": "com.example.kitchenkompanion.app-main-36:/layout/fragment_colors.xml"
+        "merged": "com.example.kitchenkompanion.app-merged_res-34:/drawable__7755608461595340913_128.png.flat",
+        "source": "com.example.kitchenkompanion.app-main-36:/drawable/_7755608461595340913_128.png"
+    },
+    {
+        "merged": "com.example.kitchenkompanion.app-merged_res-34:/drawable__621521691571183084_128.png.flat",
+        "source": "com.example.kitchenkompanion.app-main-36:/drawable/_621521691571183084_128.png"
     },
     {
         "merged": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-merged_res-34:/layout_activity_main.xml.flat",
         "source": "/Users/europaroso/.gradle/daemon/8.7/com.example.kitchenkompanion.app-main-36:/layout/activity_main.xml"
-    },
-    {
-        "merged": "com.example.kitchenkompanion.app-merged_res-34:/layout_fragment_text.xml.flat",
-        "source": "com.example.kitchenkompanion.app-main-36:/layout/fragment_text.xml"
     }
 ]
