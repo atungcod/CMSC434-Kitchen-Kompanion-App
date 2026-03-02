@@ -19,9 +19,10 @@ class TodoFragment : Fragment(R.layout.fragment_todo) {
 
         val input = view.findViewById<EditText>(R.id.todoInput)
         val addBtn = view.findViewById<Button>(R.id.addButton)
+        val clearBtn = view.findViewById<Button>(R.id.clearButton)
         val recycler = view.findViewById<RecyclerView>(R.id.todoRecycler)
 
-        // Pre-fill some shopping list items
+        // Pre-fill some shopping list items without icons
         if (items.isEmpty()) {
             items.add(TodoItem("Milk"))
             items.add(TodoItem("Bread"))
@@ -51,6 +52,15 @@ class TodoFragment : Fragment(R.layout.fragment_todo) {
             adapter.notifyItemInserted(0)
             recycler.scrollToPosition(0)
             input.text.clear()
+        }
+
+        clearBtn.setOnClickListener {
+            if (items.isNotEmpty()) {
+                val size = items.size
+                items.clear()
+                adapter.notifyItemRangeRemoved(0, size)
+                Toast.makeText(requireContext(), "List cleared", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
