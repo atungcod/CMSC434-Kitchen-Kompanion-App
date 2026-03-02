@@ -1,56 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#CED4DA"
     android:orientation="vertical"
-    android:background="@color/pink"
-    android:padding="12dp">
-
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/todoTitle"
-        android:layout_width="wrap_content"
+        android:id="@+id/todoHeader"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="-To Do List-"
+        android:layout_marginBottom="16dp"
+        android:text="-ToDo Screen-"
+        android:textColor="@android:color/black"
+        android:textSize="32sp"
         android:textStyle="bold"
-        android:textSize="34sp"
-        android:textColor="@color/black"
-        android:fontFamily="serif"
-        android:layout_marginBottom="10dp"/>
-
+        android:typeface="serif" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
-
+        android:layout_marginBottom="16dp">
 
         <EditText
             android:id="@+id/todoInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="New entry..."
-            android:background="@android:color/white"
-            android:padding="10dp"/>
-
+            android:hint="Type something first"
+            android:textColor="@android:color/black"
+            android:typeface="serif" />
 
         <Button
             android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add"
-            android:layout_marginStart="10dp"/>
+            android:typeface="serif" />
     </LinearLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todoRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="6dp"/>
-</LinearLayout>
+        android:layout_weight="1" />
 
+</LinearLayout>
