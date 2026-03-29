@@ -2,41 +2,42 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C0C0C0"
+    android:background="@color/white"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
+        <!-- Header Bar matching Main Page -->
         <RelativeLayout
+            android:id="@+id/headerBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp">
+            android:layout_height="64dp"
+            android:background="@color/blue"
+            android:paddingHorizontal="16dp">
 
             <ImageView
                 android:id="@+id/btnBack"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:clickable="true"
                 android:focusable="true"
-                android:padding="8dp"
                 android:src="@android:drawable/ic_menu_revert"
-                android:tint="#FFFFFF" />
+                android:tint="@color/white" />
 
             <TextView
                 android:id="@+id/profileHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="serif"
+                android:fontFamily="sans-serif-medium"
                 android:text="User Profile"
-                android:textColor="#FFFFFF"
-                android:textSize="32sp"
+                android:textColor="@color/white"
+                android:textSize="22sp"
                 android:textStyle="bold" />
         </RelativeLayout>
 
@@ -44,7 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <ImageView
                 android:id="@+id/profileImage"
@@ -53,7 +55,8 @@
                 android:clickable="true"
                 android:contentDescription="Profile Picture"
                 android:focusable="true"
-                android:src="@drawable/img" />
+                android:src="@drawable/img"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/profileName"
@@ -61,82 +64,106 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Smiley J. Smile"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif" />
+
+            <!-- Birthday Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birthday_label"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/birthdayInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/birthday_hint"
+                    android:inputType="none"
+                    android:importantForAutofill="no"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <!-- Household Occupants Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/household_members_label"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/householdSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:entries="@array/household_members_array" />
+            </LinearLayout>
+
+            <!-- Allergies Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/allergies_label"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/allergiesSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:entries="@array/allergies_array" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/selected_allergies_label"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/selectedAllergiesList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/none_selected"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif" />
+            </LinearLayout>
+
         </LinearLayout>
-
-        <!-- Birthday Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/birthday_label"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif" />
-
-        <EditText
-            android:id="@+id/birthdayInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="false"
-            android:hint="@string/birthday_hint"
-            android:inputType="none"
-            android:importantForAutofill="no"
-            android:fontFamily="sans-serif" />
-
-        <!-- Household Occupants Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/household_members_label"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif" />
-
-        <Spinner
-            android:id="@+id/householdSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/household_members_array" />
-
-        <!-- Allergies Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/allergies_label"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif" />
-
-        <Spinner
-            android:id="@+id/allergiesSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/allergies_array" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/selected_allergies_label"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif" />
-
-        <TextView
-            android:id="@+id/selectedAllergiesList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/none_selected"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif" />
-
     </LinearLayout>
 </ScrollView>
