@@ -41,7 +41,7 @@ class HomePage : Fragment() {
         val rvRecommended = view.findViewById<RecyclerView>(R.id.rvRecommendedRecipes)
         val recipes = FavoritesPage.getAllRecipes()
         rvRecommended.adapter = RecipeAdapter(recipes) { recipe ->
-            navigateToPlaceholder(recipe.name)
+            navigateToRecipeDetail(recipe)
         }
 
         // Your Ingredients 3x3 Grid
@@ -80,6 +80,7 @@ class HomePage : Fragment() {
             when (title) {
                 "Favorites" -> navigateToFavorites()
                 "Profile" -> navigateToProfile()
+                "Shopping List" -> navigateToShoppingList()
                 else -> navigateToPlaceholder(title)
             }
             true
@@ -93,10 +94,41 @@ class HomePage : Fragment() {
             .addToBackStack(null)
             .commit()
     }
+    private fun navigateToShoppingList() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, ShoppingListFragment())
+            .addToBackStack(null)
+            .commit()
+    }
 
     private fun navigateToProfile() {
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, ProfileFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+    private fun navigateToRecipeDetail(recipe: FavoritesPage.Companion.Recipe) {
+        val fragment = RecipeDetailFragment()
+        val bundle = Bundle()
+
+        bundle.putString("name", recipe.name)
+        bundle.putString("time", recipe.time)
+        bundle.putString("difficulty", recipe.difficulty)
+        bundle.putInt("imageRes", recipe.imageRes)
+
+        val missingIngredients = when (recipe.name) {
+            "Creamy Salmon Pasta" -> arrayListOf("Garlic", "Heavy Cream")
+            "Tomato Basil Pasta" -> arrayListOf("Fresh Basil")
+            "Strawberry Salad" -> arrayListOf("Dressing")
+            "Roasted Potatoes" -> arrayListOf("Olive Oil")
+            else -> arrayListOf()
+        }
+
+        bundle.putStringArrayList("missingIngredients", missingIngredients)
+        fragment.arguments = bundle
+
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
             .commit()
     }
@@ -180,4 +212,6 @@ class HomePage : Fragment() {
 
         override fun getItemCount() = items.size
     }
+
+
 }
