@@ -30,8 +30,8 @@ class FavoritesPage : Fragment() {
             Recipe("Tomato Basil Pasta", "20 mins", "Easy", false, R.drawable.tomato_pasta, arrayListOf("Basil")),
             Recipe("Strawberry Salad", "15 mins", "Easy", false, R.drawable.strawberry_salad, arrayListOf("Poppyseed Dressing", "Walnuts")),
             Recipe("Roasted Potatoes", "40 mins", "Easy", false, R.drawable.roasted_potatoes, arrayListOf("Rosemary", "Olive Oil")),
-            Recipe("Lemon Herb Salmon", "15 mins", "Easy", false, R.drawable.salmon, arrayListOf("Dill", "Asparagus")),
-            Recipe("Classic Grilled Cheese", "10 mins", "Easy", false, R.drawable.cheese, arrayListOf("Sourdough Bread", "Butter"))
+            Recipe("Lemon Herb Salmon", "15 mins", "Easy", false, R.drawable.lemon_salmon, arrayListOf("Dill", "Asparagus")),
+            Recipe("Classic Grilled Cheese", "10 mins", "Easy", false, R.drawable.grilled_cheese, arrayListOf("Sourdough Bread", "Butter"))
         )
 
         private val ingredients = mutableListOf(
