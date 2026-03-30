@@ -128,7 +128,7 @@ class HomePage : Fragment() {
             .commit()
     }
 
-    // Adapter for Recipes
+    // Adapter for Recipes - Uses horizontal layout for home page scroll
     inner class RecipeAdapter(private val items: List<FavoritesPage.Companion.Recipe>, private val onClick: (FavoritesPage.Companion.Recipe) -> Unit) :
         RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
 
@@ -149,7 +149,7 @@ class HomePage : Fragment() {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val v = LayoutInflater.from(parent.context).inflate(R.layout.item_recipe, parent, false)
+            val v = LayoutInflater.from(parent.context).inflate(R.layout.item_recipe_horizontal, parent, false)
             return ViewHolder(v)
         }
 
