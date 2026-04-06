@@ -29,10 +29,6 @@ class HomePage : Fragment() {
         val username: String? = null
         tvGreeting.text = getString(R.string.greeting_text, username ?: "User!")
 
-        // Hamburger Menu
-        val ivMenu = view.findViewById<ImageView>(R.id.ivHamburgerMenu)
-        ivMenu.setOnClickListener { showMenu(it) }
-
         // Profile Picture -> ProfileFragment
         val ivProfile = view.findViewById<ImageView>(R.id.ivProfilePic)
         ivProfile.setOnClickListener { 
@@ -53,34 +49,13 @@ class HomePage : Fragment() {
         val rvIngredients = view.findViewById<RecyclerView>(R.id.rvYourIngredients)
         val ingredients = FavoritesPage.getAllIngredients()
         rvIngredients.adapter = IngredientAdapter(ingredients) { ingredient ->
-            navigateToPlaceholder(ingredient.name)
+            navigateToIngredientDetail(ingredient)
         }
 
         // See All -> All Ingredients
         view.findViewById<TextView>(R.id.tvSeeAll).setOnClickListener {
             navigateToAllItems(AllItemsPage.TYPE_INGREDIENTS)
         }
-    }
-
-    private fun showMenu(view: View) {
-        val popup = PopupMenu(context, view)
-        popup.menu.add("All Ingredients")
-        popup.menu.add("All Recipes")
-        popup.menu.add("Favorites")
-        popup.menu.add("Shopping List")
-        
-        popup.setOnMenuItemClickListener { item ->
-            val title = item.title.toString()
-            when (title) {
-                "Favorites" -> navigateToFavorites()
-                "All Ingredients" -> navigateToAllItems(AllItemsPage.TYPE_INGREDIENTS)
-                "All Recipes" -> navigateToAllItems(AllItemsPage.TYPE_RECIPES)
-                "Shopping List" -> navigateToShoppingList()
-                else -> navigateToPlaceholder(title)
-            }
-            true
-        }
-        popup.show()
     }
 
     private fun navigateToFavorites() {
@@ -114,6 +89,14 @@ class HomePage : Fragment() {
         args.putStringArrayList("missingIngredients", recipe.missingIngredients)
         fragment.arguments = args
         
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun navigateToIngredientDetail(ingredient: FavoritesPage.Companion.Ingredient) {
+        val fragment = IngredientDetailFragment.newInstance(ingredient.name, ingredient.category, ingredient.imageRes)
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)

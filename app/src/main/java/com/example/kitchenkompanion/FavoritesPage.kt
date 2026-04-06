@@ -14,6 +14,8 @@ class FavoritesPage : Fragment() {
 
     // Central Data Repository
     companion object {
+        const val NO_IMAGE = -1
+
         data class Recipe(
             val name: String,
             val time: String,
@@ -23,7 +25,12 @@ class FavoritesPage : Fragment() {
             val missingIngredients: ArrayList<String> = arrayListOf()
         )
 
-        data class Ingredient(val name: String, val imageRes: Int, val category: String)
+        data class Ingredient(
+            val name: String, 
+            val imageRes: Int, 
+            val category: String,
+            var quantity: Int = 1
+        )
 
         private val recipes = mutableListOf(
             Recipe("Creamy Salmon Pasta", "25 mins", "Medium", false, R.drawable.salmon_pasta, arrayListOf("Heavy Cream", "Basil")),
@@ -47,13 +54,35 @@ class FavoritesPage : Fragment() {
         )
 
         fun getAllRecipes(): List<Recipe> = recipes
-        fun getAllIngredients(): List<Ingredient> = ingredients
+        fun getAllIngredients(): MutableList<Ingredient> = ingredients
 
         fun getFavoritedRecipes(): List<Recipe> = recipes.filter { it.isFavorited }
 
         fun toggleFavorite(recipeName: String) {
             recipes.find { it.name == recipeName }?.let {
                 it.isFavorited = !it.isFavorited
+            }
+        }
+
+        fun updateIngredientQuantity(name: String, delta: Int) {
+            ingredients.find { it.name == name }?.let {
+                it.quantity += delta
+                if (it.quantity <= 0) {
+                    ingredients.remove(it)
+                }
+            }
+        }
+
+        fun removeIngredient(name: String) {
+            ingredients.removeAll { it.name == name }
+        }
+        
+        fun addIngredient(name: String, category: String, quantity: Int, imageRes: Int = NO_IMAGE) {
+            val existing = ingredients.find { it.name.lowercase() == name.lowercase() }
+            if (existing != null) {
+                existing.quantity += quantity
+            } else {
+                ingredients.add(Ingredient(name, imageRes, category, quantity))
             }
         }
     }
