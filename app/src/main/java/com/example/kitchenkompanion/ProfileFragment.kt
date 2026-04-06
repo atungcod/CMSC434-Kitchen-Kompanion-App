@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.kitchenkompanion.databinding.FragmentProfileBinding
@@ -39,6 +40,18 @@ class ProfileFragment : Fragment() {
                     dialog.dismiss()
                 }
                 .show()
+        }
+
+        binding.etProfileName.setText(FavoritesPage.currentUsername)
+
+        binding.btnSaveName.setOnClickListener {
+            val newName = binding.etProfileName.text.toString()
+            if (newName.isNotBlank()) {
+                FavoritesPage.currentUsername = newName
+                Toast.makeText(context, "Name updated to $newName", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Name cannot be empty", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.birthdayInput.setOnClickListener {
