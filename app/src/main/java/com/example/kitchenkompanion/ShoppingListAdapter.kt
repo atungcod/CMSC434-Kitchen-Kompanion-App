@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 
@@ -20,12 +21,17 @@ class ShoppingListAdapter(context: android.content.Context, private val items: M
         val nameText = view.findViewById<TextView>(R.id.tvItemName)
         val quantityText = view.findViewById<TextView>(R.id.tvQuantity)
         val suggestedHeader = view.findViewById<TextView>(R.id.tvSuggestedHeader)
+        val btnPlus = view.findViewById<Button>(R.id.btnPlus)
+        val btnMinus = view.findViewById<Button>(R.id.btnMinus)
+
+        // Set the +/- for the buttons
+        btnPlus.text = "+"
+        btnMinus.text = "-"
 
         nameText.text = item.name
         quantityText.text = "Quantity: ${item.quantity}"
         checkBox.isChecked = item.checked
 
-        // Show header only if it's the first suggested item in a sequence
         if (item.isSuggested && (position == 0 || !items[position - 1].isSuggested)) {
             suggestedHeader.visibility = View.VISIBLE
             suggestedHeader.text = "Suggested for you"
@@ -38,6 +44,20 @@ class ShoppingListAdapter(context: android.content.Context, private val items: M
 
         checkBox.setOnCheckedChangeListener { _, isChecked ->
             item.checked = isChecked
+        }
+
+        btnPlus.setOnClickListener {
+            item.quantity++
+            notifyDataSetChanged()
+        }
+
+        btnMinus.setOnClickListener {
+            if (item.quantity > 1) {
+                item.quantity--
+            } else {
+                items.removeAt(position)
+            }
+            notifyDataSetChanged()
         }
 
         return view

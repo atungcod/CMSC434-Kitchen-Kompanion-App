@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- Header Bar -->
+    <!-- Header Bar (Hamburger Menu Removed) -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="80dp"
         android:background="@color/blue"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -22,7 +22,7 @@
             android:fontFamily="sans-serif-medium"
             android:text="Hello, User"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,27 +30,14 @@
 
         <ImageView
             android:id="@+id/ivProfilePic"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/img_2"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/ivHamburgerMenu"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@android:drawable/ic_menu_sort_by_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivProfilePic"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -73,34 +60,34 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="Recommended Recipes"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvRecommendedRecipes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_recipe" />
+                tools:listitem="@layout/item_recipe_horizontal" />
 
             <!-- Your Ingredients Section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Your Ingredients"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvYourIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3"
                 tools:itemCount="9"
@@ -111,12 +98,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="See all"
                 android:textColor="@color/blue"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -1,10 +1,14 @@
 package com.example.kitchenkompanion
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -47,33 +51,91 @@ class AllItemsPage : Fragment() {
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAdd)
 
         if (type == TYPE_INGREDIENTS) {
-            val rawIngredients = FavoritesPage.getAllIngredients()
-            val itemsWithHeaders = mutableListOf<Any>()
-            
-            val grouped = rawIngredients.groupBy { it.category }
-            grouped.forEach { (category, list) ->
-                itemsWithHeaders.add(category) // Add header string
-                itemsWithHeaders.addAll(list) // Add ingredients
-            }
-
-            val layoutManager = GridLayoutManager(context, 3)
-            layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return if (itemsWithHeaders[position] is String) 3 else 1
-                }
-            }
-            rv.layoutManager = layoutManager
-            rv.adapter = IngredientAdapter(itemsWithHeaders)
-            
+            setupIngredientList(rv)
             fab.visibility = View.VISIBLE
             fab.setOnClickListener {
-                Toast.makeText(context, "Add Ingredient Clicked", Toast.LENGTH_SHORT).show()
+                showAddIngredientDialog()
             }
         } else {
             rv.layoutManager = GridLayoutManager(context, 2)
             rv.adapter = RecipeAdapter(FavoritesPage.getAllRecipes())
             fab.visibility = View.GONE
         }
+    }
+
+    private fun setupIngredientList(rv: RecyclerView) {
+        val rawIngredients = FavoritesPage.getAllIngredients()
+        val itemsWithHeaders = mutableListOf<Any>()
+        
+        val grouped = rawIngredients.groupBy { it.category }
+        grouped.forEach { (category, list) ->
+            itemsWithHeaders.add(category) // Add header string
+            itemsWithHeaders.addAll(list) // Add ingredients
+        }
+
+        val layoutManager = GridLayoutManager(context, 3)
+        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return if (itemsWithHeaders[position] is String) 3 else 1
+            }
+        }
+        rv.layoutManager = layoutManager
+        rv.adapter = IngredientAdapter(itemsWithHeaders)
+    }
+
+    private fun showAddIngredientDialog() {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_add_ingredient, null)
+        val etName = dialogView.findViewById<EditText>(R.id.etIngredientName)
+        val spinnerCategory = dialogView.findViewById<Spinner>(R.id.spinnerCategory)
+        val tvQuantity = dialogView.findViewById<TextView>(R.id.tvDialogQuantity)
+        val btnPlus = dialogView.findViewById<Button>(R.id.btnDialogPlus)
+        val btnMinus = dialogView.findViewById<Button>(R.id.btnDialogMinus)
+
+        var quantity = 1
+        tvQuantity.text = quantity.toString()
+
+        btnPlus.setOnClickListener {
+            quantity++
+            tvQuantity.text = quantity.toString()
+        }
+
+        btnMinus.setOnClickListener {
+            if (quantity > 1) {
+                quantity--
+                tvQuantity.text = quantity.toString()
+            }
+        }
+
+        val dialog = AlertDialog.Builder(context)
+            .setTitle("Add New Ingredient")
+            .setView(dialogView)
+            .setPositiveButton("Add", null) // Set to null to override later for text size
+            .setNegativeButton("Cancel", null)
+            .create()
+
+        dialog.setOnShowListener {
+            val btnAdd = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            val btnCancel = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+            
+            btnAdd.textSize = 20f
+            btnCancel.textSize = 20f
+            
+            btnAdd.setOnClickListener {
+                val name = etName.text.toString()
+                val category = spinnerCategory.selectedItem.toString()
+                
+                if (name.isNotBlank()) {
+                    FavoritesPage.addIngredient(name, category, quantity)
+                    val rv = view?.findViewById<RecyclerView>(R.id.rvAllItems)
+                    if (rv != null) setupIngredientList(rv)
+                    dialog.dismiss()
+                } else {
+                    Toast.makeText(context, "Name cannot be empty", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        
+        dialog.show()
     }
 
     private fun navigateToRecipeDetail(recipe: FavoritesPage.Companion.Recipe) {
@@ -162,10 +224,15 @@ class AllItemsPage : Fragment() {
             } else if (holder is ItemViewHolder) {
                 val item = items[position] as FavoritesPage.Companion.Ingredient
                 holder.name.text = item.name
-                holder.image.setImageResource(item.imageRes)
+                if (item.imageRes == FavoritesPage.NO_IMAGE) {
+                    holder.image.visibility = View.GONE
+                } else {
+                    holder.image.visibility = View.VISIBLE
+                    holder.image.setImageResource(item.imageRes)
+                }
                 
                 holder.itemView.setOnClickListener {
-                    val fragment = PlaceholderFragment.newInstance(item.name)
+                    val fragment = IngredientDetailFragment.newInstance(item.name, item.category, item.imageRes)
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, fragment)
                         .addToBackStack(null)

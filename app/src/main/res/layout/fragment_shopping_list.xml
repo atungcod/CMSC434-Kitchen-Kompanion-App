@@ -10,14 +10,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="80dp"
         android:background="@color/blue"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/btnBackHome"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:src="@android:drawable/ic_menu_revert"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +31,7 @@
             android:fontFamily="sans-serif-medium"
             android:text="Shopping List"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Add item manually..."
-            android:inputType="textCapSentences" />
+            android:inputType="textCapSentences"
+            android:textSize="22sp" />
 
         <Button
             android:id="@+id/btnAddItem"
@@ -63,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Add"
+            android:textSize="20sp"
             android:backgroundTint="@color/blue" />
     </LinearLayout>
 
@@ -82,7 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Suggest Low Stock"
-            android:textSize="12sp" />
+            android:textSize="18sp"
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/btnAddFromRecipe"
@@ -91,7 +94,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Add From Recipe"
-            android:textSize="12sp" />
+            android:textSize="18sp"
+            android:textAllCaps="false" />
     </LinearLayout>
 
     <ListView
@@ -100,7 +104,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:divider="@android:color/darker_gray"
-        android:dividerHeight="0.5dp"
+        android:dividerHeight="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/actionButtons" />
 
