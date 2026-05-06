@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Kitchen Kompanion</string>
-    <string name="greeting_text">Hello, %1$s</string>
+    <string name="greeting_text">Hello, Chef!</string>
     <string-array name="camera_options">
         <item>dSLR</item>
         <item>Mirrorless</item>
@@ -34,10 +34,20 @@
         <item>Pantry</item>
         <item>Other</item>
     </string-array>
-    <string name="birthday_label">Birthday</string>
-    <string name="birthday_hint">Select your birthday</string>
-    <string name="household_members_label">Household Occupants</string>
-    <string name="allergies_label">Select Allergy</string>
+    <string-array name="dietary_preferences_array">
+        <item>Select preference</item>
+        <item>Vegan</item>
+        <item>Vegetarian</item>
+        <item>Keto</item>
+        <item>Paleo</item>
+        <item>Low Carb</item>
+        <item>Halal</item>
+        <item>Kosher</item>
+    </string-array>
+    <string name="dietary_preferences_label">Dietary Preferences</string>
+    <string name="selected_preferences_label">Your Preferences:</string>
+    <string name="allergy_warning_note">Note: These allergies will be used to filter recipe suggestions.</string>
+    <string name="allergies_label">Add Allergy</string>
     <string name="selected_allergies_label">Your Allergies:</string>
     <string name="none_selected">None selected</string>
 </resources>

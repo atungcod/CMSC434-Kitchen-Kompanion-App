@@ -58,103 +58,12 @@
                 android:src="@drawable/img_2"
                 android:scaleType="centerCrop" />
 
-            <!-- Editable Name Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="24dp"
-                android:gravity="center_horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Your Name"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/etProfileName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:hint="Enter your name"
-                    android:inputType="textPersonName"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black" />
-
-                <Button
-                    android:id="@+id/btnSaveName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Save Name"
-                    android:textSize="18sp"
-                    android:backgroundTint="@color/blue" />
-            </LinearLayout>
-
-            <!-- Birthday Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="32dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/birthday_label"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-medium"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/birthdayInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:hint="@string/birthday_hint"
-                    android:inputType="none"
-                    android:textSize="20sp"
-                    android:importantForAutofill="no"
-                    android:fontFamily="sans-serif"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-
-            <!-- Household Occupants Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="24dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/household_members_label"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-medium"
-                    android:textSize="20sp" />
-
-                <Spinner
-                    android:id="@+id/householdSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="54dp"
-                    android:layout_marginTop="8dp"
-                    android:entries="@array/household_members_array" />
-            </LinearLayout>
-
             <!-- Allergies Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="32dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -175,22 +84,67 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/selected_allergies_label"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif-medium" />
 
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/allergyChipGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+
                 <TextView
-                    android:id="@+id/selectedAllergiesList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/none_selected"
+                    android:text="@string/allergy_warning_note"
+                    android:textColor="#666666"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <!-- Dietary Preferences Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dietary_preferences_label"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:fontFamily="sans-serif" />
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/dietarySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="8dp"
+                    android:entries="@array/dietary_preferences_array" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/selected_preferences_label"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/dietaryChipGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
             </LinearLayout>
 
         </LinearLayout>

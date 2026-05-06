@@ -26,7 +26,7 @@ class HomePage : Fragment() {
 
         // Setup Greeting
         val tvGreeting = view.findViewById<TextView>(R.id.tvGreeting)
-        tvGreeting.text = getString(R.string.greeting_text, FavoritesPage.currentUsername)
+        tvGreeting.text = getString(R.string.greeting_text)
 
         val ivProfile = view.findViewById<ImageView>(R.id.ivProfilePic)
         ivProfile.setOnClickListener { 

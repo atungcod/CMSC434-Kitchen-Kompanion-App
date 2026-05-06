@@ -15,8 +15,10 @@ class FavoritesPage : Fragment() {
     // Central Data Repository
     companion object {
         const val NO_IMAGE = -1
-        
-        var currentUsername: String = "User"
+
+        val selectedAllergies = mutableSetOf<String>()
+        val selectedPreferences = mutableSetOf<String>()
+
 
         data class Recipe(
             val name: String,
